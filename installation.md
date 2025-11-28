@@ -18,7 +18,7 @@ source venv-PL/bin/activate
 Clone this repository:
 
 ```bash
-git clone [https://github.com/josephleekl/amd-lightning-install-demo.git](https://github.com/josephleekl/amd-lightning-install-demo.git)
+git clone https://github.com/josephleekl/amd-lightning-install-demo.git
 ```
 
 ---
@@ -30,6 +30,7 @@ git clone [https://github.com/josephleekl/amd-lightning-install-demo.git](https:
 ```bash
 pip install <wheel>
 # this will automatically install pennylane, lightning-qubit, lightning-amdgpu
+# this will be replaced by actual repository in PyPI once uploaded
 ```
 
 ### 2. Docker
