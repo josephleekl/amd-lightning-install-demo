@@ -100,8 +100,10 @@ export CMAKE_PREFIX_PATH=:"${KOKKOS_INSTALL_PATH}":/opt/rocm:$CMAKE_PREFIX_PATH
 
 git clone https://github.com/PennyLaneAI/pennylane-lightning.git
 cd pennylane-lightning
+# Temporary branch
+git checkout amd-v0.43.0
 pip install -r requirements.txt
-pip install git+https://github.com/PennyLaneAI/pennylane.git@master
+pip install pennylane
 
 # First Install Lightning-Qubit
 PL_BACKEND="lightning_qubit" python scripts/configure_pyproject_toml.py
