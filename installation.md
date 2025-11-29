@@ -28,9 +28,11 @@ git clone https://github.com/josephleekl/amd-lightning-install-demo.git
 ### 1. Pip install wheel
 
 ```bash
+cd amd-lightning-install-demo/
 pip install <wheel>
 # this will automatically install pennylane, lightning-qubit, lightning-amdgpu
 # this will be replaced by actual repository in PyPI once uploaded
+python Example2_QFT.py
 ```
 
 ### 2. Docker
@@ -46,8 +48,8 @@ sudo usermod -a -G render,video $LOGNAME
 sudo apt update
 sudo apt install vim wget gpg
 sudo mkdir --parents --mode=0755 /etc/apt/keyrings
-wget [https://repo.radeon.com/rocm/rocm.gpg.key](https://repo.radeon.com/rocm/rocm.gpg.key) -O - | gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
-echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] [https://repo.radeon.com/amd-container-toolkit/apt/](https://repo.radeon.com/amd-container-toolkit/apt/) noble main" | sudo tee /etc/apt/sources.list.d/amd-container-toolkit.list
+wget https://repo.radeon.com/rocm/rocm.gpg.key -O - | gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amd-container-toolkit/apt/ noble main" | sudo tee /etc/apt/sources.list.d/amd-container-toolkit.list
 sudo apt update
 sudo apt install amd-container-toolkit
 sudo amd-ctk runtime configure
@@ -60,7 +62,9 @@ docker run --runtime=amd -e AMD_VISIBLE_DEVICES=0 rocm/dev-ubuntu-24.04 amd-smi 
 **Step B: Run Container**
 
 ```bash
-docker run -it --rm --runtime=amd --gpus 1  pennylaneai/pennylane:latest-lightning-kokkos-rocm /bin/bash
+docker run -it --rm --runtime=amd --gpus 1 -v $(pwd):/io pennylaneai/pennylane:latest-lightning-kokkos-rocm /bin/bash
+cd /io
+python Example2_QFT.py
 ```
 
 ### 3. From source
@@ -71,7 +75,7 @@ For full details, see the documentation:
 **Install dependencies:**
 
 ```bash
-sudo apt install cmake ninja-build gcc-11 g++-11
+sudo apt install cmake ninja-build gcc-11 g++-11 -y
 
 # Install Kokkos
 wget https://github.com/kokkos/kokkos/archive/refs/tags/4.5.00.tar.gz
@@ -99,6 +103,7 @@ cmake -S . -B build -G Ninja \
 cmake --build build && cmake --install build
 export CMAKE_PREFIX_PATH=:"${KOKKOS_INSTALL_PATH}":/opt/rocm:$CMAKE_PREFIX_PATH
 
+cd ../
 git clone https://github.com/PennyLaneAI/pennylane-lightning.git
 cd pennylane-lightning
 # Temporary branch
