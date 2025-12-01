@@ -29,7 +29,7 @@ git clone https://github.com/josephleekl/amd-lightning-install-demo.git
 
 ```bash
 cd amd-lightning-install-demo/
-pip install <wheel>
+pip install wheels/<wheel>
 # this will automatically install pennylane, lightning-qubit, lightning-amdgpu
 # this will be replaced by actual repository in PyPI once uploaded
 python Example2_QFT.py
