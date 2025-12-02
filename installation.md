@@ -104,7 +104,9 @@ export CMAKE_PREFIX_PATH=:"${KOKKOS_INSTALL_PATH}":/opt/rocm:$CMAKE_PREFIX_PATH
 cd ../
 git clone https://github.com/PennyLaneAI/pennylane-lightning.git
 cd pennylane-lightning
-# Temporary branch
+# Temporary branch for stable version
+# For latest version, can use master branch once
+# this is merged https://github.com/PennyLaneAI/pennylane-lightning/pull/1300
 git checkout amd-v0.43.0
 pip install -r requirements.txt
 pip install pennylane
