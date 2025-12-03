@@ -4,6 +4,9 @@ from timeit import default_timer as timer
 # For pennylane==0.43 , this requires jax==0.6.2
 import jax
 
+# enable 64 bit precision for JAX
+jax.config.update("jax_enable_x64", True)
+
 # Try and scale up these numbers!
 wires = 20
 layers = 2
