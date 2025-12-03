@@ -1,7 +1,7 @@
 import pennylane as qml
 import jax.numpy as jnp
 from timeit import default_timer as timer
-# For pennylane==0.43 , this requires jax==0.6.0
+# For pennylane==0.43 , this requires jax==0.6.2
 import jax
 
 # Try and scale up these numbers!
