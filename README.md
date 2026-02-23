@@ -3,7 +3,7 @@
 Follow instructions in here https://docs.pennylane.ai/projects/lightning/en/latest/lightning_kokkos/installation_hpc.html to install lightning-kokkos with MPI.
 
 Note:
-
+- Update the arch flag from `-DKokkos_ARCH_AMD_GFX90A` to `-DKokkos_ARCH_AMD_GFX950` during the Kokkos cmake step
 - You can ignore the following lines:
 
 ````
